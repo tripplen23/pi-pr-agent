@@ -2,6 +2,11 @@
 
 All notable changes to `huggy-pr-agent` are documented in this file.
 
+## [1.12.1] - 2026-11-14
+
+### Fixed
+- **Polished Coffee-Sip Choreography & Zero-Ghosting SMIL (`assets/huggy-reviewing.svg`)**: re-choreographs `huggy-reviewing.svg` into a smooth 36-beat (`6.12s`) pixel-art loop — brisk typing, a clear pause on the home row, glancing left and reaching across to grip the mug handle on the desk, lifting to mouth height below the sunglasses, tilting the mug + head `1px` back to sip with rising steam, setting the mug back down on the desk, and returning the hand to resume typing — driven by discrete `visibility` (`begin="0s"`) with explicit `visibility="hidden"` defaults so browsers never alpha-blend overlapping layers.
+
 ## [1.12.0] - 2026-11-14
 
 ### Added

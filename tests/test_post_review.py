@@ -1062,6 +1062,15 @@ const count = 1;
 
         self.assertTrue(os.path.isfile(os.path.join(assets_dir, "pi-marketplace-card.png")))
 
+        # Discrete visibility + explicit begin="0s" prevents multi-layer GPU opacity blending in huggy-reviewing.svg
+        rev_root = ET.parse(os.path.join(assets_dir, "huggy-reviewing.svg")).getroot()
+        rev_anims = list(rev_root.iter("{http://www.w3.org/2000/svg}animate"))
+        self.assertGreaterEqual(len(rev_anims), 10)
+        for anim in rev_anims:
+            self.assertEqual(anim.attrib.get("attributeName"), "visibility")
+            self.assertEqual(anim.attrib.get("begin"), "0s")
+            self.assertEqual(anim.attrib.get("calcMode"), "discrete")
+
         # 2. Judge banner preserves sha= marker and <details> sections from review-start banner
         start_md = post_progress.build_progress_markdown(
             [{"path": "src/a.ts", "additions": 5, "deletions": 1, "changed_lines": 6}],
